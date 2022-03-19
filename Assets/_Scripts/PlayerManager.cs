@@ -13,36 +13,39 @@ public class PlayerManager : MonoBehaviour
     DIRECTION_TYPE direction = DIRECTION_TYPE.STOP;
     Rigidbody2D rb;
     Animator anim;
+    SpriteRenderer spriteRenderer;
     float speed;
     bool isGround;
+    bool isDead;
+    [SerializeField] GameManager gm;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
         float x = Input.GetAxis("Horizontal");
-
-        if(x == 0) {
-            //止まっている
-            direction = DIRECTION_TYPE.STOP;
-        }
-        else if (x > 0) {
-            //右に移動
-            direction = DIRECTION_TYPE.RIGHT;
-        }
-        else if (x < 0) {
-            //左に移動
-            direction = DIRECTION_TYPE.LEFT;
-        }
-        //スペース押したらジャンプする
-        if (Input.GetKeyDown(KeyCode.Space) && isGround) {
-            Jump();
+        if (!isDead) {
+            if (x == 0) {
+                //止まっている
+                direction = DIRECTION_TYPE.STOP;
+            } else if (x > 0) {
+                //右に移動
+                direction = DIRECTION_TYPE.RIGHT;
+            } else if (x < 0) {
+                //左に移動
+                direction = DIRECTION_TYPE.LEFT;
+            }
+            //スペース押したらジャンプする
+            if (Input.GetKeyDown(KeyCode.Space) && isGround) {
+                Jump();
+            }
         }
 
     }
@@ -56,14 +59,14 @@ public class PlayerManager : MonoBehaviour
 
             case DIRECTION_TYPE.RIGHT:
                 speed = 3;
-                transform.localScale = new Vector3(1, transform.localScale.y, 1);
+                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 1);
                 anim.SetBool("right", true);
                 anim.SetBool("move", true);
                 break;
 
             case DIRECTION_TYPE.LEFT:
                 speed = -3;
-                transform.localScale = new Vector3(1, transform.localScale.y, 1);
+                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 1);
                 anim.SetBool("right", false);
                 anim.SetBool("move", true);
                 break;
@@ -87,6 +90,8 @@ public class PlayerManager : MonoBehaviour
 
         if (collision.gameObject.tag == "Trap") {
             Debug.Log("トラップだ");
+            isDead = true;
+            StartCoroutine(GameOver());
         }
 
     }
@@ -101,5 +106,25 @@ public class PlayerManager : MonoBehaviour
         if (collision.gameObject.tag == "Ground") {
             isGround = false;
         }
+    }
+
+    IEnumerator GameOver() {
+        //動きを止める
+        direction = DIRECTION_TYPE.STOP;
+        rb.gravityScale = 0;
+        rb.velocity = Vector2.zero;
+        //点滅させる
+        int count = 0;
+        while(count < 10) {
+            //消える
+            spriteRenderer.color = new Color32(255, 120, 120, 50);
+            yield return new WaitForSeconds(0.1f);
+            //着く
+            spriteRenderer.color = new Color32(255, 120, 120, 255);
+
+            count++;
+        }
+        //リスタートさせる
+        gm.GameOver();
     }
 }
