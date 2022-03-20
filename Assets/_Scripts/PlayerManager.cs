@@ -75,6 +75,8 @@ public class PlayerManager : MonoBehaviour
     }
 
     void Jump() {
+        //ジャンプするときにリジッドボディの速度を0に
+        rb.velocity = Vector2.zero;
         //重力を逆にする
         rb.gravityScale = -rb.gravityScale;
         //キャラを上下反転
@@ -94,6 +96,9 @@ public class PlayerManager : MonoBehaviour
             StartCoroutine(GameOver());
         }
 
+        if (collision.gameObject.tag == "BounceBar") {
+            Jump();
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision) {
@@ -126,5 +131,12 @@ public class PlayerManager : MonoBehaviour
         }
         //リスタートさせる
         gm.GameOver();
+    }
+
+
+    public void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "BounceBar") {
+            Jump();
+        }
     }
 }
