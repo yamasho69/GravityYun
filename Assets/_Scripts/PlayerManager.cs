@@ -17,6 +17,8 @@ public class PlayerManager : MonoBehaviour
     float speed;
     bool isGround;
     bool isDead;
+    bool gravityButton;
+    public Joystick joystick;
     [SerializeField] GameManager gm;
 
     // Start is called before the first frame update
@@ -32,18 +34,18 @@ public class PlayerManager : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");
         if (!isDead) {
-            if (x == 0) {
-                //止まっている
-                direction = DIRECTION_TYPE.STOP;
-            } else if (x > 0) {
+            if (x > 0 || joystick.Horizontal > 0) {
                 //右に移動
                 direction = DIRECTION_TYPE.RIGHT;
-            } else if (x < 0) {
+            } else if (x < 0 || joystick.Horizontal < 0) {
                 //左に移動
                 direction = DIRECTION_TYPE.LEFT;
+            } else if (x == 0 || joystick.Horizontal == 0) {
+                //止まっている
+                direction = DIRECTION_TYPE.STOP;
             }
-            //スペース押したらジャンプする
-            if (Input.GetKeyDown(KeyCode.Space) && isGround) {
+                //スペース押したらジャンプする
+                if ((Input.GetKeyDown(KeyCode.Space)||gravityButton) && isGround) {
                 Jump();
             }
         }
@@ -83,6 +85,7 @@ public class PlayerManager : MonoBehaviour
         transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, 1);
         //反転する軸が足元になっており、床の反対側にいってしまっていたので、スプライトエディタで
         //ピボットの位置をbottomcenterからcenterに変更。
+        gravityButton = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -150,6 +153,10 @@ public class PlayerManager : MonoBehaviour
         if (collision.gameObject.tag == "BounceBar") {
             Jump();
         }
+    }
+
+    public void OnClickGravityButton() {
+        gravityButton = true;
     }
 
     /*

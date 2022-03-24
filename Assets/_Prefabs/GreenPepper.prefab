@@ -10,9 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8250471398054758681}
   - component: {fileID: 8250471398054758682}
-  - component: {fileID: 8250471398054758663}
   - component: {fileID: 8250471398054758680}
-  - component: {fileID: -8542434351245145626}
   m_Layer: 0
   m_Name: GreenPepper
   m_TagString: Poison
@@ -49,6 +47,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -84,19 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8250471398054758663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8250471398054758683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b196fc5058d88d640a898edb4b3ac10d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOn: 0
 --- !u!61 &8250471398054758680
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,30 +109,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6449876, y: 0.6459403}
   m_EdgeRadius: 0
---- !u!114 &-8542434351245145626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8250471398054758683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d996ada8eddd17d49ab6df420f6fa6ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerCheck: {fileID: 8250471398054758663}
-  deathitemvoices:
-  - {fileID: 8300000, guid: 6a0779ed874fb584f8c68945c4422215, type: 3}
-  - {fileID: 8300000, guid: ae97f93c2392b1f4192619543a3255c9, type: 3}
-  - {fileID: 8300000, guid: f319c465c3c104544ae2b3126a129c2f, type: 3}
-  - {fileID: 8300000, guid: 46ecec918053fa145b041a3ed516969b, type: 3}
-  - {fileID: 8300000, guid: 6204eba028b13984eb24efdfa7d72528, type: 3}
-  - {fileID: 8300000, guid: 2f6bfe0400165824ba20a4fa73a1e6ee, type: 3}
-  clip1: {fileID: 8300000, guid: 6a0779ed874fb584f8c68945c4422215, type: 3}
-  clip2: {fileID: 8300000, guid: ae97f93c2392b1f4192619543a3255c9, type: 3}
-  clip3: {fileID: 8300000, guid: f319c465c3c104544ae2b3126a129c2f, type: 3}
-  clip4: {fileID: 8300000, guid: 6204eba028b13984eb24efdfa7d72528, type: 3}
-  clip5: {fileID: 8300000, guid: 46ecec918053fa145b041a3ed516969b, type: 3}
-  morunmorunSE: {fileID: 8300000, guid: 3ecff22040b3d534c805233348b32707, type: 3}
-  isWatar: 0
