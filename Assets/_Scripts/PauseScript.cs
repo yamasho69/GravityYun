@@ -15,25 +15,28 @@ public class PauseScript : MonoBehaviour{
     public Sprite pauseButton;
     //public GameObject goToTitleButton;
     public GameObject pauseEffect;
-    public AudioClip pauseOnSE;
-    public AudioClip pauseOffSE;
+    public AudioClip  pauseOnSE;
+    public AudioClip  pauseOffSE;
     public GameObject joyStick;
     public GameObject jumpButton;
+    public GameManager gm;
+
 
     public void Update() {
         if (Input.GetKeyDown(KeyCode.P) /*&& GameManager.instance.isGameOver == false*/) {//GetKeyDown関数にしないと何回も押せてしまう。Pキーでもポーズがかかるように改良
             pauseTheGame();
         }
+        gm = GameManager.instance;//これがないとポーズの音がならない
     }
 
     public void pauseTheGame(){
         if (IsOnPause) {
+            gm.RandomizeSfx(pauseOffSE);
             Time.timeScale = 1;
             IsOnPause = false;
             //this.gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             //押すとボタンの画像自体が変わる方式に変更　https://futabazemi.net/unity/photo_change_collider/
             this.gameObject.GetComponent<Image>().sprite = pauseButton;
-            //GameManager.instance.playSE(pauseOffSE);
             pauseEffect.SetActive(false);
             joyStick.SetActive(true);
             jumpButton.SetActive(true);
@@ -43,7 +46,7 @@ public class PauseScript : MonoBehaviour{
             IsOnPause = true;
             //this.gameObject.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
             this.gameObject.GetComponent<Image>().sprite = playButton;
-            //GameManager.instance.playSE(pauseOnSE);
+            gm.RandomizeSfx(pauseOnSE);
             pauseEffect.SetActive(true);
             //goToTitleButton.SetActive(true);
             jumpButton.SetActive(false);

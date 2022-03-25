@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+ public class  GameManager : MonoBehaviour
 {
     [SerializeField] GameObject clearText;
 
@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance = null;
 
-    private AudioSource audioSource = null;
+    private AudioSource audioSource;
     public AudioSource sfxSource;
 
     private void Awake() {
@@ -27,10 +27,7 @@ public class GameManager : MonoBehaviour
             instance = this;
             audioSource = GetComponent<AudioSource>();
             DontDestroyOnLoad(this.gameObject);
-        } else {
-            Destroy(this.gameObject);
         }
-
     }
 
     //ランダムでボイスを鳴らす、参考http://negi-lab.blog.jp/archives/RandomizeSfx.html

@@ -18,6 +18,11 @@ public class PlayerManager : MonoBehaviour
     bool isGround;
     bool isDead;
     bool gravityButton;
+    [Header("TrapSE")] public AudioClip trapSE;
+    [Header("MorunMorunSE")] public AudioClip morunmorunSE;
+    [Header("TrapVoices")] public AudioClip[] trapVoices;
+    [Header("PoisonVoices")] public AudioClip[] poisonVoices;
+    [Header("FallVoices")] public AudioClip[] fallVoices;
     public Joystick joystick;
     [SerializeField] GameManager gm;
 
@@ -93,22 +98,31 @@ public class PlayerManager : MonoBehaviour
             isGround = true;
         }
 
-        if (collision.gameObject.tag == "Trap") {
+        if (collision.gameObject.tag == "Trap" && !isDead) {
             Debug.Log("トラップだ");
             isDead = true;
+            gm.RandomizeSfx(trapSE);
+            gm.RandomizeSfx(trapVoices);
             StartCoroutine(GameOver());
+            anim.SetBool("down",true);
+            gm.RandomizeSfx(morunmorunSE);
         }
 
-        if (collision.gameObject.tag == "Hole") {
+        if (collision.gameObject.tag == "Hole" && !isDead) {
             Debug.Log("落ちた");
             isDead = true;
+            gm.RandomizeSfx(fallVoices);
             StartCoroutine(GameOver());
+            anim.SetBool("down", true);
         }
 
-        if (collision.gameObject.tag == "Poison") {
+        if (collision.gameObject.tag == "Poison" && !isDead) {
             Debug.Log("毒だ");
             isDead = true;
+            gm.RandomizeSfx(poisonVoices);
             StartCoroutine(GameOver());
+            anim.SetBool("down", true);
+            gm.RandomizeSfx(morunmorunSE);
         }
 
         if (collision.gameObject.tag == "BounceBar") {
@@ -135,7 +149,7 @@ public class PlayerManager : MonoBehaviour
         rb.velocity = Vector2.zero;
         //点滅させる
         int count = 0;
-        while(count < 10) {
+        while(count < 20) {
             //消える
             spriteRenderer.color = new Color32(255, 120, 120, 50);
             yield return new WaitForSeconds(0.1f);
