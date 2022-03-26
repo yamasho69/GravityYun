@@ -19,7 +19,10 @@ public class PlayerManager : MonoBehaviour
     bool isDead;
     bool gravityButton;
     [Header("TrapSE")] public AudioClip trapSE;
+    [Header("GravitySE")] public AudioClip gravitySE;
+    [Header("FallSE")] public AudioClip fallSE;
     [Header("MorunMorunSE")] public AudioClip morunmorunSE;
+    [Header("StartVoices")] public AudioClip[] startVoices;
     [Header("TrapVoices")] public AudioClip[] trapVoices;
     [Header("PoisonVoices")] public AudioClip[] poisonVoices;
     [Header("FallVoices")] public AudioClip[] fallVoices;
@@ -32,6 +35,7 @@ public class PlayerManager : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        gm.RandomizeSfx(startVoices);
     }
 
     // Update is called once per frame
@@ -82,6 +86,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     void Jump() {
+        gm.RandomizeSfx(gravitySE);
         //ジャンプするときにリジッドボディの速度を0に
         rb.velocity = Vector2.zero;
         //重力を逆にする
@@ -111,6 +116,7 @@ public class PlayerManager : MonoBehaviour
         if (collision.gameObject.tag == "Hole" && !isDead) {
             Debug.Log("落ちた");
             isDead = true;
+            gm.RandomizeSfx(fallSE);
             gm.RandomizeSfx(fallVoices);
             StartCoroutine(GameOver());
             anim.SetBool("down", true);
@@ -151,10 +157,10 @@ public class PlayerManager : MonoBehaviour
         int count = 0;
         while(count < 20) {
             //消える
-            spriteRenderer.color = new Color32(255, 120, 120, 50);
+            spriteRenderer.color = new Color32(255, 255, 255, 50);
             yield return new WaitForSeconds(0.1f);
             //着く
-            spriteRenderer.color = new Color32(255, 120, 120, 255);
+            spriteRenderer.color = new Color32(255, 255, 255, 255);
 
             count++;
         }

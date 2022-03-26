@@ -112,4 +112,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568093df32795d34a92529a67313b51f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gm: {fileID: 0}
+  gm: {fileID: 5389532928622679869, guid: 6fecca9a6d3af1845a596541cb9b8655, type: 3}
+  player: {fileID: 5439124186692861716, guid: 264e948ae0f578549bb2805a25524990, type: 3}
+  clearVoices:
+  - {fileID: 8300000, guid: eeec12d8eb4715b468f1ca8ba41ab250, type: 3}
+  - {fileID: 8300000, guid: 248ed50ec607b4946b9c702ba4f59e2c, type: 3}
+  - {fileID: 8300000, guid: f02fd589251cd2c4cb76b3db541a1c0d, type: 3}
+  - {fileID: 8300000, guid: 46e71c0ea777ba44ab9b2df39daa155e, type: 3}
+  - {fileID: 8300000, guid: 29ee01a067cd19d449e2141f5fef3045, type: 3}
+  - {fileID: 8300000, guid: 31ee541beddfb9e44893a993b8288515, type: 3}
+  - {fileID: 8300000, guid: 69f1c5e4b02bea549909c7569ad7262c, type: 3}
+  - {fileID: 8300000, guid: 8ea5db3564cd3db4d917d81bc0b0fc34, type: 3}
+  - {fileID: 8300000, guid: 5dec62f6fa71b94429182ceae7e21663, type: 3}
+  - {fileID: 8300000, guid: 2d83a4d7790b79348abc95c32f780b40, type: 3}
+  nextScene: 0
+  goToNextScene: {fileID: 8556919333526655240, guid: f9d8370378a427f40b7fec917b717872, type: 3}

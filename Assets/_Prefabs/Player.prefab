@@ -204,7 +204,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trapSE: {fileID: 8300000, guid: 426a0b20aee1e974fb9f8f523cd58465, type: 3}
+  gravitySE: {fileID: 8300000, guid: 173f99e427c3d72478078d9cdac7f528, type: 3}
+  fallSE: {fileID: 8300000, guid: be9ba9ddfb88dc74eb5f801113857126, type: 3}
   morunmorunSE: {fileID: 8300000, guid: 3ecff22040b3d534c805233348b32707, type: 3}
+  startVoices:
+  - {fileID: 8300000, guid: d5d279a594e0cd147ae08ef08ee2e7d8, type: 3}
+  - {fileID: 8300000, guid: 35b45862760cb2e42a138e973e5b7d9c, type: 3}
+  - {fileID: 8300000, guid: 42b6fb240e3e88a46873438711293641, type: 3}
+  - {fileID: 8300000, guid: 8bdd1f175e495eb43b2ef50d683eadce, type: 3}
+  - {fileID: 8300000, guid: e10618c5796835c4a8c2987f2d0f5428, type: 3}
+  - {fileID: 8300000, guid: 9c2e7162aa9fbfc4e90713c4c5fa495d, type: 3}
+  - {fileID: 8300000, guid: b8e9d0914671c7d48864fc8affc5f4b2, type: 3}
+  - {fileID: 8300000, guid: e21d6c5ed9a3f3a4d8457cfd97483137, type: 3}
+  - {fileID: 8300000, guid: 76fc8298730c6744689d81437e35b96c, type: 3}
+  - {fileID: 8300000, guid: 1bfd7e9cf5b5d5747a0a087052a068c3, type: 3}
   trapVoices:
   - {fileID: 8300000, guid: 951a422e585eca34baf820f30fd8d8b5, type: 3}
   - {fileID: 8300000, guid: dbb6f75499cf1f94cb68c4881bb461d6, type: 3}
@@ -226,6 +239,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c95e16e867917f54b89a189e02c09075, type: 3}
   - {fileID: 8300000, guid: bf4bd44b129f4f044998f2a8fb88a20e, type: 3}
   - {fileID: 8300000, guid: e2f97e98216458b42a6bc98224908623, type: 3}
+  - {fileID: 8300000, guid: cb756ae25195ef54883bb9c482bed774, type: 3}
   poisonVoices:
   - {fileID: 8300000, guid: a63ba726df8116149acf7473b8f73a5a, type: 3}
   - {fileID: 8300000, guid: 88ead33f1f781f24c95eca6f373e69cb, type: 3}
@@ -260,7 +274,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2e73a779358bd864e82018ab8731fa90, type: 3}
   - {fileID: 8300000, guid: 6ba817ff45047c04baaa517a4ae63a28, type: 3}
   joystick: {fileID: 0}
-  gm: {fileID: 5389532928622679869, guid: 6fecca9a6d3af1845a596541cb9b8655, type: 3}
+  gm: {fileID: 0}
 --- !u!95 &5439124186692861726
 Animator:
   serializedVersion: 3

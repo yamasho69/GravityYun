@@ -19,7 +19,7 @@ public class PauseScript : MonoBehaviour{
     public AudioClip  pauseOffSE;
     public GameObject joyStick;
     public GameObject jumpButton;
-    public GameManager gm;
+    [SerializeField] GameManager gm;
 
 
     public void Update() {
