@@ -132,6 +132,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         if (collision.gameObject.tag == "BounceBar") {
+            Debug.Log("ƒoƒEƒ“ƒh");
             Jump();
         }
     }
