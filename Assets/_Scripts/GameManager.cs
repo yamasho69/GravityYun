@@ -6,10 +6,9 @@ using UnityEngine.UI;
 
  public class  GameManager : MonoBehaviour
 {
-
     public void GameOver() {
         //リスタートする。
-        SceneManager.LoadScene("Stage01");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);//今のシーンから再開_https://qiita.com/haifuri/items/0a03270b1b3d4331196b
     }
 
     public static GameManager instance = null;
