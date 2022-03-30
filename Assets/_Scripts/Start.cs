@@ -11,7 +11,7 @@ public class Start : MonoBehaviour
     [Header("StartVoices")] public AudioClip[] startVoices;
     [Header("StartVoices")] public AudioClip startSE;
     public int nextScene;
-    public Text text;
+    public GameObject text;
     
 
 
@@ -19,8 +19,7 @@ public class Start : MonoBehaviour
         //クリア音声を流す。
         gm.RandomizeSfx(startVoices);
         gm.RandomizeSfx(startSE);
-        text = GetComponent<Text>();
-       // StartCoroutine(Flash());
+        StartCoroutine(Flash());
         //次のシーンに行く
         Invoke("GoToNextScene", 2.0f);
     }
@@ -33,11 +32,11 @@ public class Start : MonoBehaviour
     IEnumerator Flash() {
         //点滅させる
         //消える
-        text.color = new Color32(255, 255, 255, 200);
-        yield return new WaitForSeconds(0.1f);
+        text.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
         //着く
-        text.color = new Color32(255, 255, 255, 255);
-        yield return new WaitForSeconds(0.1f);
+        text.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
         StartCoroutine(Flash());
     }
 }

@@ -673,7 +673,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0b5cdc8b304a37b4b82e4ed9d6517036, type: 3}
   startSE: {fileID: 8300000, guid: 1d1133350641fa84c9f19305402bd12a, type: 3}
   nextScene: 1
-  text: {fileID: 803660783}
+  text: {fileID: 803660781}
 --- !u!1 &1446882806
 GameObject:
   m_ObjectHideFlags: 0
