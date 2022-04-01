@@ -16,7 +16,6 @@ public class Start : MonoBehaviour
 
 
     public void OnCilck() { 
-        //ƒNƒŠƒA‰¹º‚ğ—¬‚·B
         gm.RandomizeSfx(startVoices);
         gm.RandomizeSfx(startSE);
         StartCoroutine(Flash());

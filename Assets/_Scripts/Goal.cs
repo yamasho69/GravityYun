@@ -22,7 +22,7 @@ public class Goal : MonoBehaviour
             //クリア音声を流す。
             gm.RandomizeSfx(clearVoices);
             //次のシーンに行く
-            Invoke("GoToNextScene", 2.0f);
+            Invoke("GoToNextScene", 2.5f);
         }
     }
 

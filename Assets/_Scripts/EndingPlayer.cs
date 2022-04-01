@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EndingPlayer: MonoBehaviour
 {
@@ -28,11 +29,13 @@ public class EndingPlayer: MonoBehaviour
     [Header("MorunMorunSE")] public AudioClip morunmorunSE;
     [Header("StartVoices")] public AudioClip[] startVoices;
     [Header("SecondVoices")] public AudioClip[] secondVoices;
-    [Header("PoisonVoices")] public AudioClip[] thirdVoices;
+    [Header("ThirdVoices")] public AudioClip[] thirdVoices;
     [Header("FallVoices")] public AudioClip[] fallVoices;
     [Header("ƒZƒŠƒt“à—e")] [TextArea(1, 3)] public string serifu;
     //public Joystick joystick;
     [SerializeField] GameManager gm;
+    public GameObject owari;
+    public GameObject credit;
 
     // Start is called before the first frame update
     void Start()
@@ -62,7 +65,13 @@ public class EndingPlayer: MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         gm.RandomizeSfx(fallSE);
         gm.RandomizeSfx(fallVoices);
-
+        yield return new WaitForSeconds(3.0f);
+        credit.SetActive(true);
+        yield return new WaitForSeconds(6.0f);
+        credit.SetActive(false);
+        owari.SetActive(true);
+        yield return new WaitForSeconds(4.0f);
+        SceneManager.LoadScene(0);
     }
     // Update is called once per frame
     void Update()
